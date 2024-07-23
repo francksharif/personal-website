@@ -1,4 +1,6 @@
-import secrets
+from app import create_app
 
-secret_key= secrets.token_hex(32)
-print(secret_key)
+app = create_app()
+
+if __name__ == "__main__":
+    app.run(debug=True)
