@@ -1,7 +1,9 @@
 from flask import Flask 
+from flask_migrate import Migrate 
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
+
 
 def create_app():
     app = Flask(__name__)
@@ -17,6 +19,12 @@ def create_app():
 
     from .admin import admin as admin_blueprint
     app.register_blueprint(admin_blueprint) 
+
+    from .project import project as project_blueprint
+    app.register_blueprint(project_blueprint)
+
+    with app.app_context():
+        from . import models
     
 
     return app

@@ -6,3 +6,6 @@ node_modules
 package-lock.json
 img
 output.css
+migrations 
+instance
+model_test.py
