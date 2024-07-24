@@ -1,6 +1,6 @@
 from flask import render_template
 from . import main 
-
+from ..models import Project
 
 # Homepage view 
 @main.route('/')
@@ -11,5 +11,6 @@ def homepage():
 # Projects view page 
 @main.route('/projects')
 def projects():
-    return render_template('projects.html')
+    projects = Project.query.all()
+    return render_template('projects.html', projects=projects)
 

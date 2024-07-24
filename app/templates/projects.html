@@ -14,21 +14,22 @@
 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 mt-24">
 
     <!-- Display All Projects -->
-
+    {% for project in projects %}
     <!--                      -->
     <div class="max-w-sm rounded overflow-hidden shadow-xl  border-dark">
         <a href="">
             <img class="w-full h-64 object-cover" src="{{ url_for('static', filename='img/test.jpeg')}}" alt="">
             <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2 text-white">The Coldest Sunset</div>
+                <div class="font-bold text-xl mb-2 text-white">{{ project.title }}</div>
                 <p class="text-primary text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                    {{ project.small_description}}
                 </p>
             </div>
            
         </a>
     </div>
 
+    {% endfor %}
 
 
 
