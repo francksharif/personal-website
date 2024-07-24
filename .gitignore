@@ -5,7 +5,7 @@ __pycache__
 node_modules
 package-lock.json
 img
-output.css
+css
 migrations 
 instance
-model_test.py
+app/static/css/output.css
