@@ -3,7 +3,39 @@
 
 {% block content %}
 
+<div >
 
+    <div class="text-primary">
+        <a href="{{ url_for ('main.projects')}}" class="text-green text-md">&larr; Back to projects</a>
+
+        <article class="mt-4">
+
+            <img src="" alt="" width="1000" height="500">
+
+            <h1 class="mt-12 text-2xl text-white font-semibold">Title</h1>
+
+            <ul class="flex space-x-4 mt-4">
+                <li><a href="">GitHub</a></li>
+                <li> | </li>
+                <!-- IF PROJECT LINK EXIST -->
+                <li><a href="">Project Link</a></li>
+            </ul>
+
+            <!-- Project  Description Content -->
+             
+             <div class="mt-12">
+                <h2 class="text-xl mb-6 text-white font-semibold">Description</h2>
+
+                <div>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio error laborum dolor, rerum pariatur illum. Ut eum neque quae soluta.
+                </div>
+             </div>
+
+        </article>
+
+    </div>
+
+</div>
 
 {% endblock content %}
 
