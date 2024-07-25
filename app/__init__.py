@@ -34,6 +34,10 @@ def create_app():
 
     with app.app_context():
         from . import models
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return models.User.query.get(int(user_id))
     
 
     return app

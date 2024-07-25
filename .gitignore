@@ -8,4 +8,4 @@ img
 css
 migrations 
 instance
-app/static/css/output.css
+output.css
