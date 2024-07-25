@@ -1,4 +1,4 @@
-from flask import Flask 
+from flask import Flask, render_template 
 from flask_migrate import Migrate 
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -33,6 +33,14 @@ def create_app():
 
     from .project import project as project_blueprint
     app.register_blueprint(project_blueprint)
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('404.html'), 404
+
+    @app.errorhandler(500)
+    def internal_server_error(error):
+        return render_template('500.html'), 500
 
     with app.app_context():
         from . import models
