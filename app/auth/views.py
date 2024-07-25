@@ -5,7 +5,7 @@ from . import auth
 
 
 
-auth.route('/login', methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
