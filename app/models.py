@@ -31,8 +31,8 @@ class Project(db.Model):
     slug = db.Column(db.String(128), unique=True, nullable=False)
 
     def __init__(self, **kwargs):
-        super().__init__()
-        if not self.slug:
+        super().__init__(**kwargs)
+        if not self.slug and self.title:
             self.slug = slugify(self.title)
 
     def __repr__(self):

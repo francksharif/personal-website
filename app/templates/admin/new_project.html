@@ -1,0 +1,113 @@
+{% extends "./base.html" %}
+
+
+{% block content %}
+
+
+<div class="container mx-auto p-6 text-primary">
+    <h1 class="text-2xl font-bold mb-6 text-center">Publish a new Project</h1>
+    
+
+    <!-- Form  -->
+
+    <form action="{{ url_for('admin.new_project') }}" method='POST' enctype="multipart/form-data" class="bg-dark shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        
+      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />  
+        <!-- Title -->
+        <div class="mb-4">
+            <label for="title" class="block text-gray-300 text-sm font-bold mb-2">Title</label>
+            <input type="text" id="title" name="title" required
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500 bg-gray-700 text-white">
+          </div>
+
+        <!-- Small Description -->
+        <div class="mb-4">
+            <label for="small-description" class="block text-gray-300 text-sm font-bold mb-2">Small description</label>
+            <input type="text" id="small-description" name="small-description" required
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500 bg-gray-700 text-white">
+          </div>
+
+        <!-- Description  -->
+        <div class="mb-4">
+            <label for="description" class="block text-gray-300 text-sm font-bold mb-2">Project Description</label>
+            <textarea id="description" name="description" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" required></textarea>
+            <script>
+                CKEDITOR.replace('description', {
+                    contentsCss: [
+                        'body { background-color: #2e2e2e; color: #f0f0f0; }',
+                        '.cke_editable { background-color: #2e2e2e; color: #f0f0f0; }'
+                    ]
+                });
+            </script>
+        </div>
+
+
+        <!-- Github Link -->
+        <div class="mb-4">
+            <label for="github-link" class="block text-gray-300 text-sm font-bold mb-2">Github link</label>
+            <input type="text" id="github-link" name="github-link"  required
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500 bg-gray-700 text-white">
+        </div>
+
+        <!-- Project Link -->
+        <div class="mb-4">
+            <label for="project-link" class="block text-gray-300 text-sm font-bold mb-2">Project link</label>
+            <input type="text" id="project-link" name="project-link"
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500 bg-gray-700 text-white">
+          </div>
+
+        <!-- Image -->
+        <div class="flex items-center space-x-6 mb-12">
+            <div class="shrink-0">
+              <img id='image' class="h-16 w-16 object-cover rounded-full" alt="" />
+            </div>
+            <label class="block">
+              <span class="sr-only">Choose profile photo</span>
+              <input type="file" name="image" onchange="loadFile(event)" class="block w-full text-sm text-slate-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-semibold
+                file:bg-violet-50 file:text-dark
+                hover:file:bg-violet-100
+              "/>
+            </label>
+          </div>
+
+
+          <!-- Button -->
+           <div class='flex justify-center'>
+            <input type="submit" value="Post project" class="bg-green  text-white font-bold py-2 px-4  hover:cursor-pointer rounded" />
+           </div>
+          
+      
+    </div>
+    </div>
+</form>
+
+<script>
+    var loadFile = function(event) {
+        
+        var input = event.target;
+        var file = input.files[0];
+        var type = file.type;
+
+       var output = document.getElementById('image');
+
+
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+            URL.revokeObjectURL(output.src)
+        }
+    };
+</script>
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+
