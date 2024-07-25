@@ -11,12 +11,14 @@ from sqlalchemy import exc
 
 
 @admin.route('/admin/dashboard')
+@login_required
 def dashboard():
     projects = Project.query.all()
     return render_template('admin/dashboard.html', projects=projects)
 
 
 @admin.route('/admin/project/create', methods=['GET', 'POST'])
+@login_required
 def new_project():
     if request.method == 'POST':
         title = request.form.get('title')
@@ -64,6 +66,7 @@ def new_project():
 
 
 @admin.route('/admin/project/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
 def edit_project(id):
     project = Project.query.get_or_404(id)
     if request.method == 'POST':
@@ -90,6 +93,7 @@ def edit_project(id):
 
 
 @admin.route('/admin/project/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
 def delete_project(id):
     project = Project.query.get_or_404(id)
     if request.method=='POST':
@@ -103,6 +107,9 @@ def delete_project(id):
 
 
 @admin.route('/admin/project/<string:slug>')
+@login_required
 def admin_project(slug):
     project = Project.query.filter_by(slug=slug).first()
     return render_template('admin/project_admin.html', project=project)
+
+

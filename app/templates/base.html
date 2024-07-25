@@ -22,6 +22,13 @@
 
 
             <!--  ADMIN AUTHENTICATION -->
+        {% if current_user.is_authenticated %}
+            <div class='flex justify-end w-full items-center space-x-4' >
+              <a href="{{ url_for('admin.dashboard')}}" class="rounded-md px-3 py-2 text-md font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-all">Dashboard</a>
+              <a href="{{ url_for('auth.logout') }}" class="rounded-md px-3 py-2 text-md font-medium text-gray-300 hover:bg-red-500 border-2 border-red-500  hover:text-white transition-all">Logout</a>
+            </div>
+            
+        {% endif %}
       </div>
   </nav>
   <!--     End Nav Bar         -->
