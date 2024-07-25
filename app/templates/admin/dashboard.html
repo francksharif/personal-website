@@ -23,8 +23,8 @@
     {% for project in projects %}
     <!--          Project            -->
     <div class="max-w-sm rounded overflow-hidden shadow-xl  border-dark bg-slate-800">
-        <a href="">
-            <img class="w-full h-64 object-cover" src="{{ url_for('static', filename='img/test.jpeg')}}" alt="">
+        <a href="{{url_for('admin.admin_project', slug=project.slug)}}">
+            <img class="w-full h-64 object-cover" src="{{ url_for('static', filename='uploads/' ~ project.image_file )}}" alt="">
             <div class="px-6 py-4">
                 <h3 class="font-bold text-xl mb-2 text-white">{{ project.title }}</h3>
                 <p class="text-primary text-base">

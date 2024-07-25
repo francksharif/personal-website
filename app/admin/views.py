@@ -100,3 +100,9 @@ def delete_project(id):
             return redirect(url_for('admin.dashboard'))
         return redirect(url_for('admin.dashboard'))
     return render_template('admin/delete_project.html', project=project)
+
+
+@admin.route('/admin/project/<string:slug>')
+def admin_project(slug):
+    project = Project.query.filter_by(slug=slug).first()
+    return render_template('admin/project_admin.html', project=project)
